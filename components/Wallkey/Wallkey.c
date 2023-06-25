@@ -121,6 +121,7 @@ static int8_t Wallkey_Read(uint8_t *Key_Id, int8_t Switch, uint8_t* Key_type)
                 {
                     if ((data_u1[9] == KEY_SIN_UP) || (data_u1[9] == KEY_SIN_DOWN) || (data_u1[9] == KEY_RELEASE) || (data_u1[9] == KEY_SIN_DOU))
                     {
+                        ESP_LOGE(TAG, "u1-9=%02x", data_u1[9]);
                         return data_u1[9];
                     }
                     else
@@ -181,6 +182,7 @@ void Wallkey_App(uint8_t *Key_Id, int8_t Switch)
         if (WallKeyCtl_Status == WallKeyUpStart || WallKeyCtl_Status == WallKeyDownStart)
         {
             WallKeyCtl_Status = WallKeyUpStop;
+            WallKeyCtl_Status = WallKeyDownStop;
         }
     }
 
